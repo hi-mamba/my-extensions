@@ -12,8 +12,16 @@ def save_image(image, filename):
 def convert_image(input_file):
     try:
         image = Image.open(input_file)
-        icon128 = resize_image(image, (640, 400))
-        save_image(icon128, "icon128.png")
+        #icon128 = resize_image(image, (640, 400))
+        #save_image(icon128, "icon128.png")
+        image = Image.open(input_file)
+        icon16 = resize_image(image, (16, 16))
+        icon48 = resize_image(image, (48, 48))
+        icon128 = resize_image(image, (128, 128))
+
+        save_image(icon16, "chrome-extendsions/drink-water-reminder/images/icon16.png")
+        save_image(icon48, "chrome-extendsions/drink-water-reminder/images/icon48.png")
+        save_image(icon128, "chrome-extendsions/drink-water-reminder/images/icon128.png")
 
         print("Conversion completed successfully.")
     except Exception as e:
