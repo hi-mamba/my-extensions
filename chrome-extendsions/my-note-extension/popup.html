@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">  <title>我的笔记</title>
+  <style>
+    body { font-family: sans-serif; width: 300px; padding: 10px; }
+    #notes-container { max-height: 400px; overflow-y: auto; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px; }
+    .note-item { border-bottom: 1px solid #eee; padding: 5px; font-size: 14px; }
+    .note-date { font-size: 10px; color: #888; }
+    button { width: 100%; padding: 8px; font-size: 16px; cursor: pointer; }
+    #clear-btn { background-color: #f44336; color: white; border: none; margin-top: 5px;}
+  </style>
+</head>
+<body>
+  <h3>我的笔记</h3>
+  <div id="notes-container">正在加载...</div>
+  <button id="download-btn">下载为 TXT 文件</button>
+  <button id="clear-btn">清空所有笔记</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

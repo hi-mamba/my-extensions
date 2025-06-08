@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "智能笔记助手",
+  "version": "1.1",
+  "description": "选中文字添加到笔记。关闭浏览器时会提示保存未下载的笔记。",
+  "permissions": [
+    "contextMenus",
+    "storage",
+  "downloads",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
