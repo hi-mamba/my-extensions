@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间戳转换器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⏰ 时间戳转换器</h1>
+        
+        <div class="input-group">
+            <label for="timestamp">输入时间戳:</label>
+            <input type="text" id="timestamp" placeholder="例如: 1638360000 或 1638360000000">
+        </div>
+
+        <div class="radio-group">
+            <div class="radio-item">
+                <input type="radio" id="auto" name="timestampType" value="auto" checked>
+                <label for="auto">自动识别</label>
+            </div>
+            <div class="radio-item">
+                <input type="radio" id="seconds" name="timestampType" value="10">
+                <label for="seconds">10位(秒)</label>
+            </div>
+            <div class="radio-item">
+                <input type="radio" id="milliseconds" name="timestampType" value="13">
+                <label for="milliseconds">13位(毫秒)</label>
+            </div>
+        </div>
+
+        <button id="convertBtn">转换</button>
+
+        <div class="input-group">
+            <label>转换结果:</label>
+            <div id="result" class="result">请输入时间戳进行转换</div>
+        </div>
+
+        <div class="current-time">
+            <strong>当前时间</strong>
+            <div id="currentTime"></div>
+            <div id="currentTimestamp"></div>
+        </div>
+    </div>
+  <script src="popup.js"></script>
+</body>
+</html>
