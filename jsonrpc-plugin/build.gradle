@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.13.3'
+}
+
+group 'com.example'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+// IntelliJ Platform Properties -> https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#intellij-extension
+intellij {
+    version = '2023.1.5'
+    type = 'IC' // Target IDE Platform
+
+    plugins = ['com.intellij.java']
+}
+
+tasks {
+    // Set the JVM compatibility versions
+    withType(JavaCompile) {
+        sourceCompatibility = "11"
+        targetCompatibility = "11"
+        options.encoding = 'UTF-8'
+    }
+
+    patchPluginXml {
+        sinceBuild = '203'
+        untilBuild = '241.*'
+
+        pluginDescription = """
+        <p>Generate JSON-RPC request format from Spring Boot methods.</p>
+        <p>Features:</p>
+        <ul>
+          <li>Right-click on method to generate JSON-RPC call</li>
+          <li>Automatically extract RPC method name from annotations</li>
+          <li>Generate sample parameters with smart defaults</li>
+          <li>Support for Spring Boot annotations (@RequestMapping, @PostMapping, etc.)</li>
+          <li>Copy generated JSON-RPC to clipboard</li>
+        </ul>
+        """
+
+        changeNotes = """
+        <h3>1.0.0</h3>
+        <ul>
+          <li>Initial release</li>
+          <li>Basic JSON-RPC generation functionality</li>
+          <li>Support for Spring Boot methods</li>
+        </ul>
+        """
+    }
+
+    signPlugin {
+        certificateChain = System.getenv("CERTIFICATE_CHAIN")
+        privateKey = System.getenv("PRIVATE_KEY")
+        password = System.getenv("PRIVATE_KEY_PASSWORD")
+    }
+
+    publishPlugin {
+        token = System.getenv("PUBLISH_TOKEN")
+    }
+
+    runIde {
+        jvmArgs = ['-Xmx2g']
+    }
+}
