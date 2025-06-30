@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>com.example.jsonrpc.generator</id>
+    <name>JSON-RPC Generator</name>
+    <vendor email="support@example.com" url="http://www.example.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Generate JSON-RPC request format from Spring Boot methods.
+    Right-click on a method to generate JSON-RPC call structure.
+    ]]></description>
+
+    <idea-version since-build="203"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 注册复制到剪贴板的动作 -->
+        <copyProvider implementation="my.jsonrpc.JsonRpcCopyProvider"/>
+    </extensions>
+
+    <actions>
+        <!-- 右键菜单动作 -->
+        <action id="GenerateJsonRpc"
+                class="my.jsonrpc.GenerateJsonRpcAction"
+                text="Generate JSON-RPC Call"
+                description="Generate JSON-RPC request format">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt J"/>
+        </action>
+    </actions>
+</idea-plugin>
